@@ -1,27 +1,34 @@
 import streamlit as st
 from google.cloud import firestore
+import numpy as np
+import pandas as pd
 
-db = firestore.Client.from_service_account_json("firestore_key.json")
+from multipage import MultiPage
+from apps import uiclaims, covid# import your pages here
 
-# Streamlit widgets to let a user create a new post
-title = st.text_input("Post title")
-url = st.text_input("Post url")
-submit = st.button("Submit new post")
 
-# Once the user has submitted, upload it to the database
-if title and url and submit:
-	doc_ref = db.collection("posts").document(title)
-	doc_ref.set({
-		"title": title,
-		"url": url
-	})
 
-# And then render each post, using some light Markdown
-posts_ref = db.collection("posts")
-for doc in posts_ref.stream():
-	post = doc.to_dict()
-	title = post["title"]
-	url = post["url"]
+# Create an instance of the app 
+app = MultiPage()
 
-	st.subheader(f"Post: {title}")
-	st.write(f":link: [{url}]({url})")
+# Title of the main page
+st.title("Employment Checker")
+st.header("A website you can used to check employment status in the United State")
+st.subheader("build by Chaoyu Li, Joanna Xiao, Yuxi Fan")
+# Add all your applications (pages) here
+app.add_page("UI Claims", uiclaims.app)
+app.add_page("COVID Trend", covid.app)
+# The main app
+app.run()
+
+
+#db = firestore.Client.from_service_account_json("firestore_key.json")
+#posts_ref = db.collection("UIclaims")
+
+#for doc in posts_ref.stream():
+#	ui = doc.to_dict()
+#	title = ui["year"]
+#	url = ui["month"]
+
+#	st.subheader(f"Year: {title}")
+#	st.write(f":Month: [{url}]({url})")
