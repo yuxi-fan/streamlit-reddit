@@ -14,7 +14,7 @@ from apps import main, visualization, cityweekly, model, water, heatmap# import 
 app = MultiPage()
 
 # Title of the main page
-st.image('pics/title1.png', use_column_width = True)
+st.image('pics/title.png', use_column_width = True)
 
 st.header("A website you can use to check employment status in the United States")
 st.write("build by Chaoyu Li, Joanna Xiao, Yuxi Fan")

@@ -8,7 +8,7 @@ import plotly.express as px
 
 def app():
     
-    st.title("Left blank for Main Page")
+    st.title("Main Page")
 
 
 
