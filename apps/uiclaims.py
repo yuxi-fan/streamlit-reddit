@@ -21,7 +21,7 @@ def app():
         count_ = ui["initclaimsCountCombined"]
         df.loc[len(df)] =[year, month, date,count_]
 
-    df["datetime"]=pd.to_datetime(df.Year+df.Month+df.date,format="%Y%m%d")
+    df["datetime"]=pd.to_datetime(df.Year+"-"+df.Month+"-"+df.date,format="%Y-%m-%d")
     df['New unemployment claim count'] = df['New unemployment claim count'].apply(pd.to_numeric)
     df = df.sort_values('datetime')
     st.dataframe(df)
