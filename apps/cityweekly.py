@@ -43,7 +43,7 @@ def app():
     #compare_df = df.loc[df[datetime] == ]
     max_date_df['nitclaims_rate_regular'] = max_date_df['nitclaims_rate_regular'].apply(pd.to_numeric)
     fig = px.bar(max_date_df,x = 'cityname',y = 'nitclaims_rate_regular')
-    if st.button("show comparison"):
+    if st.button("Show comparison"):
         st.plotly_chart(fig)
   
     """ if st.button('San Jose'):

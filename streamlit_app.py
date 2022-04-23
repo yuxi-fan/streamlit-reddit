@@ -6,7 +6,7 @@ import pandas as pd
 
 
 from multipage import MultiPage
-from apps import uiclaims, covid, cityweekly# import your pages here
+from apps import main, visualization, cityweekly, model, water, heatmap# import your pages here
 
 
 
@@ -14,16 +14,19 @@ from apps import uiclaims, covid, cityweekly# import your pages here
 app = MultiPage()
 
 # Title of the main page
-st.image('title1.png', use_column_width = True)
+st.image('pics/title1.png', use_column_width = True)
 
 st.header("A website you can use to check employment status in the United States")
-st.subheader("build by Chaoyu Li, Joanna Xiao, Yuxi Fan")
+st.write("build by Chaoyu Li, Joanna Xiao, Yuxi Fan")
 
 
 # Add all your applications (pages) here
-app.add_page("UI Claims", uiclaims.app)
-app.add_page("COVID Trend", covid.app)
-app.add_page("City Weekly", cityweekly.app)
+app.add_page("Home Page", main.app)
+app.add_page("Visualizations", visualization.app)
+app.add_page("Unemployment rate for major cities", cityweekly.app)
+app.add_page("Prediction Model", model.app)
+app.add_page("US Heatmap", heatmap.app)
+app.add_page("China and the US comparison", water.app)
 # The main app
 app.run()
 
