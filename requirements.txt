@@ -4,6 +4,5 @@ pandas
 numpy
 plotly.express
 datetime
-streamlit-echarts
 request
 json
